@@ -360,6 +360,7 @@ h1{
 }
 
 .subscribe-box{
+    width: 450px;
     color: black;
     background-color: whitesmoke;
     padding: 20px 50px;
@@ -386,7 +387,7 @@ h1{
 }
 
 .input-box-container{
-    width: 450px;
+    width: calc(100%-150px);
     padding: 5px;
     background-color: #e6e8eb;
     display: flex;
@@ -402,6 +403,7 @@ h1{
 }
 
 .subscribe-btn{
+    width: 150px;
     color: white;
     background-color:rgb(2, 133, 177);
     height: 47px;
@@ -519,5 +521,39 @@ h1{
 
     .category-list-item{
         margin: 0px 10px;
+    }
+
+    .footer{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .our-info{
+        grid-column: span 1 / span 1;
+    }
+
+    .our-info .info{
+        width: 80%;
+    }
+
+    .our-info,
+    .navigation,
+    .contact-us{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 30px;
+        border-bottom: 1px solid whitesmoke;
+    }
+
+    .contact-infos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subscribe-box, .input-box-container{
+        width: 70%;
     }
 }

@@ -94,7 +94,7 @@ const initial_product_lists = [
 ];
 
 const removeActiveClass = () => {
-    category_list_items.forEach( item => item.classList.remove('active'));
+    category_list_items.forEach(item => item.classList.remove('active'));
 }
 
 menu_btn.addEventListener('click', () => {
@@ -106,19 +106,23 @@ window.addEventListener('resize', () => {
     (windowWidth > responsiveWidth) && mobile_nav.classList.remove("mobile-nav-show");
 });
 
-product_card_container.innerHTML = initial_product_lists.map( product => {
-    return `
-        <div class="product-card">
-            <div class="product-img-wrapper">
-                <img class="product-img" src="./home-page-photos/633acd6a875a330cc667b57d-eureka-ergonomic-standing-desk-l-shaped-removebg-preview.png" alt="product-card-img">/
+const addProuctToContainer = (proudct_lists) => {
+    product_card_container.innerHTML = proudct_lists.map(product => {
+        return `
+            <div class="product-card">
+                <div class="product-img-wrapper">
+                    <img class="product-img" src="./home-page-photos/633acd6a875a330cc667b57d-eureka-ergonomic-standing-desk-l-shaped-removebg-preview.png" alt="product-card-img">/
+                </div>
+                <div class="product-content">
+                    <p class="title">${product.title}</p>
+                    <p class="price">$ ${product.price}.00</p>
+                </div>
             </div>
-            <div class="product-content">
-                <p class="title">${product.title}</p>
-                <p class="price">$ ${product.price}.00</p>
-            </div>
-        </div>
-    `
-}).join("");
+        `
+    }).join("");
+}
+
+addProuctToContainer(initial_product_lists);
 
 category_list_items.forEach(item => {
     item.addEventListener('click', () => {
@@ -138,21 +142,6 @@ category_list_items.forEach(item => {
         if (clicked_category === "home") product_lists = [...products_of_week.home];
         if (clicked_category === "office") product_lists = [...products_of_week.office];
         if (clicked_category === "others") product_lists = [...products_of_week.others];
-
-        const product_elements = product_lists.map(product => {
-            return `
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img class="product-img" src="./home-page-photos/633acd6a875a330cc667b57d-eureka-ergonomic-standing-desk-l-shaped-removebg-preview.png" alt="product-card-img">/
-                    </div>
-                    <div class="product-content">
-                        <p class="title">${product.title}</p>
-                        <p class="price">$ ${product.price}.00</p>
-                    </div>
-                </div>
-            `
-        }).join("");
-
-        product_card_container.innerHTML = product_elements;
+        addProuctToContainer(product_lists);
     })
 })
